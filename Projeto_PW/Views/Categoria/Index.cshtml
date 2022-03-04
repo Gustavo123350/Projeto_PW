@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Projeto_PW.Models.CategoriaModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Nova Categoria</a>
+</p>
+<table class="table table-hover table-bordered table-borderless table-striped">
+    <thead>
+        <tr>
+            <th>
+               Código
+            </th>
+            <th>
+                Nome da Categoria
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.CategoriaId
+            </td>
+            <td>
+                @item.Nome
+            </td>
+            <td>
+               <a href="@Url.Action("Editar")/@item.CategoriaId" class="btn btn-warning">Editar</a>
+               <a href="@Url.Action("Excluir")/@item.CategoriaId" class="btn btn btn-danger">Excluir</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
